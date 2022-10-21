@@ -6,11 +6,12 @@ import numpy as np
 # image_save = "F:/ZYY/chess/images/train/images/gray/"
 # txt4corner_file = "F:/ZYY/chess/images/train/NOCUTS_0413/txt4corner/"
 # txt4corner_save = "F:/ZYY/chess/images/train/txt4corner/"
-
-image_file = 'F:/ZYY/chess/images/test3/pre-images/gray/'
-image_save = 'F:/ZYY/chess/images/test3/pre-images/gray-cut/'
-txt4corner_file = 'F:/ZYY/chess/images/test3/txt4corner/txt4corner-gray/'
-txt4corner_save = 'F:/ZYY/chess/images/test3/txt4corner/txt4corner-graycut/'
+# E:\SCHOOL\_workplace\GoJudegment_yolov5\testimg
+# E:\SCHOOL\_workplace\GoJudegment_yolov5\CODE\PROCESS\images_process\cut.py
+image_file = 'E:/SCHOOL/_workplace/GoJudegment_yolov5/testimg/'
+image_save = 'E:/SCHOOL/_workplace/GoJudegment_yolov5/testimg_out/'
+txt4corner_file = 'E:/SCHOOL/_workplace/GoJudegment_yolov5/testcorner/'
+txt4corner_save = 'E:/SCHOOL/_workplace/GoJudegment_yolov5/testcorner_out/'
 
 def corner4(f_read):
     # print(f_read)
@@ -23,13 +24,16 @@ def corner4(f_read):
     return point4
 
 path=os.path.join(image_file)
-img_list=os.listdir(path)
+img_list=os.listdir(path)#所有图片读取成一个list
 for fileName in img_list:
-    print(fileName)
+    # print(fileName)
     # 读图像
     img_path = image_file + fileName
+    print(img_path)
     # img_path = image_file + '000414.jpg'
     img = cv2.imread(img_path)
+    cv2.imshow("image",img)
+    cv2.waitKey(0)
     height, width, c = img.shape
     # 读四角坐标
     f_read = txt4corner_file + fileName.split('.')[0] + ".txt"
